@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://gstatic.com" crossorigin>
+        <link href="https://googleapis.com" rel="stylesheet">
+        <link rel="stylesheet" href="game.css">
+    </head>
+    <body class="parent">
+        <div>
+            <h2 class="head">Arrow Dodge Game</h2>
+            <p class="score">Score :</p>
+            <div class="box">
+                <img id="player" src="https://res.cloudinary.com/dxrnzzptr/image/upload/v1783328505/cool-orange-cat-pose-pixel-260nw-2629802583-removebg-preview_h5cpss.png" class="cat_img"/>
+                <img id="arrow" src="https://res.cloudinary.com/dxrnzzptr/image/upload/v1783328870/pixel-arrow-pointer-icon-link-260nw-676867363-removebg-preview_mnhd33.png" class="arr_img"/>
+            </div>
+        </div>
+        <script>
+            const player = document.querySelector(".player");
+            const player1 = document.querySelector(".player1");
+            const container = document.querySelector(".she");
+            let scoreElement = document.querySelector(".score");
+            let y = 180;
+            let y1 = 240;
+            let y17=240;
+            let score = 0;
+
+
+            document.addEventListener("keydown", (e) => {
+                if (!player) return;
+                
+                if (e.key === "ArrowUp") {
+                    y -= 10;
+                    if(y<0){
+                        y=0;
+                    }
+                }
+                if (e.key === "ArrowDown") {
+                    y += 10;
+                    if(y>240){
+                        y=240;
+                    }
+                }
+                
+
+                
+                player.style.top = y + "px";
+            });
+            document.addEventListener("keydown", (e) => {
+                if (!player1) return;
+                
+                if (e.key === "ArrowRight") {
+                    y1 += 10;
+                    if(y1>240){
+                        y1=240;
+                    }
+                }
+                
+                player1.style.left = y1 + "px";
+            });
+            setInterval(() => {
+                y1-=10;
+                player1.style.left = y1 + "px";
+                if(y1<=0){
+                    y1=240;
+                    let ry=Math.floor(Math.random()*5);
+                    y17=ry*60;
+                    player1.style.top = y17 + "px";
+                }
+                
+            }, 10);
+        </script>
+    </body>
+</html>
